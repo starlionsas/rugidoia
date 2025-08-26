@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salón de Fundadores (Global) – StarLion Academy</title>
+  <meta name="description" content="Únete como Fundador de StarLion Academy. Pagos USD/EUR para EEUU y Europa. Acceso VIP, estatus y Descuento Vitalicio de Fundador." />
+  <style>
+    :root{
+      --bg:#000; --text:#fff; --muted:#bbbbbb;
+      --gold:#D4AF37; --gold2:#E6C767;
+      --card:#0d0d0d; --border:#151515;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px; --green:#9fe29f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue','Noto Sans',sans-serif}
+    html{scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+
+    header.hero{
+      position:relative;border-radius:24px;padding:56px 24px 48px;margin:16px 0 32px;overflow:hidden;box-shadow:var(--shadow);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(212,175,55,.12), transparent 60%),
+        linear-gradient(180deg, #0a0a0a, #050505);
+    }
+    .hero h1{font-size:clamp(28px,4.2vw,48px);margin:0 0 8px;line-height:1.12}
+    .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.35);color:var(--gold);padding:8px 14px;border-radius:999px;font-weight:700;letter-spacing:.3px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-block;padding:14px 18px;border-radius:12px;font-weight:800;letter-spacing:.3px;box-shadow:var(--shadow);transition:transform .16s ease, filter .2s ease; cursor:pointer}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .btn-gold{background:linear-gradient(135deg, var(--gold), var(--gold2));color:#000;border:none}
+    .btn-dark{background:#111;color:#fff;border:1px solid #222}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(212,175,55,.35);background:rgba(212,175,55,.1);color:var(--gold);font-weight:800;cursor:pointer;box-shadow:var(--shadow);transition:transform .16s ease, filter .2s ease}
+    .chip:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    .fine{font-size:12px;color:var(--muted)}
+
+    /* Region & Lang switch */
+    .switches{position:absolute;top:14px;right:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .pill{padding:6px 10px;border:1px solid rgba(212,175,55,.35);border-radius:999px;background:rgba(212,175,55,.08);color:#D4AF37;font-weight:800;font-size:12px;letter-spacing:.2px}
+    .pill.active{background:linear-gradient(135deg,#D4AF37,#E6C767);color:#000;border:none}
+    .divider{width:1px;height:20px;background:#333;border-radius:2px}
+
+    section{margin:42px 0}
+    section h2{font-size:clamp(22px,3.2vw,32px);margin:0 0 12px}
+    section p.lead{color:var(--muted);margin:0 0 16px}
+
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:28px 0}
+    .card{grid-column:span 12;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    @media(min-width:760px){.card{grid-column:span 4}}
+    .kpi{font-size:30px;font-weight:900}
+    .label{color:var(--muted);font-size:13px;margin-top:2px}
+    .bar{height:12px;border-radius:999px;background:#121212;position:relative;overflow:hidden;margin-top:12px;border:1px solid #1a1a1a}
+    .bar > span{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#D4AF37,#E6C767);box-shadow:0 0 15px rgba(212,175,55,.4) inset}
+
+    /* Founders grid */
+    .founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:680px){.founders-grid{grid-template-columns:repeat(4,1fr)}}
+    @media(min-width:980px){.founders-grid{grid-template-columns:repeat(6,1fr)}}
+    .founder{background:linear-gradient(180deg,#0c0c0c,#070707);border:1px solid #141414;border-radius:14px;padding:14px;text-align:center}
+    .avatar{width:66px;height:66px;border-radius:50%;margin:6px auto 10px;display:grid;place-items:center;color:#000;font-weight:900;background:linear-gradient(135deg,#D4AF37,#E6C767);border:2px solid rgba(212,175,55,.55)}
+    .fname{font-weight:800;font-size:14px}
+    .fmeta{font-size:12px;color:var(--muted)}
+
+    /* Tiers */
+    .tiers{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .tier{grid-column:span 12;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;position:relative;overflow:hidden}
+    @media(min-width:860px){.tier{grid-column:span 6}}
+    .ribbon{position:absolute;top:14px;right:-30px;transform:rotate(35deg);background:linear-gradient(135deg,#D4AF37,#E6C767);color:#000;padding:6px 40px;font-weight:900;font-size:12px;border:1px solid rgba(0,0,0,.18)}
+    .price{font-size:20px;font-weight:700;margin:4px 0;color:#ddd}
+    .price-strong{font-size:22px;font-weight:900;margin:0 0 8px;color:#fff}
+    .compare{font-size:12px;color:var(--muted)}
+    .ul{margin:10px 0 0 20px;color:#ddd}.ul li{margin:6px 0}
+    .gold-title{color:#D4AF37}
+
+    footer{margin:40px 0 20px;color:var(--muted);font-size:12px;text-align:center}
+
+    /* Modal genérico */
+    .backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999}
+    .modal{max-width:520px;margin:5% auto;background:#0d0d0d;border:1px solid #222;border-radius:16px;padding:18px}
+
+    /* Precio + ahorro junto al botón */
+    .cta-with-savings{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .savings-block{display:flex;flex-direction:column;justify-content:center;min-width:220px}
+    .savings-block .line1{font-size:12px;color:#D4AF37;font-weight:800;letter-spacing:.2px}
+    .savings-block .line2{font-size:12px;color:#9fe29f;font-weight:800;position:relative;display:flex;align-items:center;gap:6px}
+
+    /* Tooltip */
+    .tooltip{position:relative;cursor:help;display:inline-flex;align-items:center;gap:4px}
+    .tooltip .tip{
+      position:absolute;left:50%;bottom:120%;
+      transform:translateX(-50%) translateY(0);
+      background:#111;color:#fff;border:1px solid #333;
+      padding:8px 10px;border-radius:8px;font-size:12px;white-space:nowrap;
+      opacity:0;pointer-events:none;transition:opacity .15s ease, transform .15s ease;box-shadow:var(--shadow)
+    }
+    .tooltip:hover .tip, .tooltip.show .tip{
+      opacity:1;transform:translateX(-50%) translateY(-6px);pointer-events:auto
+    }
+    .tooltip .info{font-size:12px;opacity:.85}
+
+    /* Global Pay modal extras */
+    .tabs .tab{background:#111;color:#fff;border:1px solid #222;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}
+    .tabs .tab.active{background:linear-gradient(135deg,#D4AF37,#E6C767);color:#000;border:none}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .field{grid-column:span 12;background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    @media(min-width:720px){ .field{grid-column:span 6} }
+    .field label{min-width:180px;color:#bbb;font-size:13px}
+    .field code{background:#111;border:1px solid #222;border-radius:8px;padding:6px 8px;color:#ddd}
+    .field .copy{margin-left:auto;background:#111;border:1px solid #333;color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer}
+    .note{margin-top:10px;color:#aaa;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <!-- Región + Idioma -->
+      <div class="switches">
+        <a href="/fundador" class="pill" id="swRegionCO">Colombia</a>
+        <a href="/fundadorglobal" class="pill active" id="swRegionGL">EEUU–Europa</a>
+        <span class="divider"></span>
+        <button class="pill active" id="langES" onclick="setLang('es')">ES</button>
+        <button class="pill" id="langEN" onclick="setLang('en')">EN</button>
+      </div>
+
+      <span class="badge" data-i18n="badge">⭐ Salón de Fundadores · Cupos limitados</span>
+      <h1><span data-i18n="h1_1">Únete al</span> <span style="color:#D4AF37">Salón de Fundadores</span> <span data-i18n="h1_2">de StarLion Academy</span></h1>
+
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#tiers" data-i18n="cta_primary">Quiero ser Fundador</a>
+        <a class="btn btn-dark" id="supportWA" target="_blank" rel="noopener" data-i18n="cta_support"
+           href="https://wa.me/573001464083?text=Hola%20StarLion%20Academy%2C%20necesito%20ayuda%20con%20mi%20pago.">Soporte Pagos</a>
+      </div>
+
+      <div class="cta-row" style="margin-top:14px">
+        <button class="chip" onclick="openPerks()" data-i18n="chip_privs">Privilegios dentro de la Comunidad VIP ✨</button>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section aria-labelledby="stats">
+      <div class="stats">
+        <div class="card">
+          <div class="kpi" id="kpiCount">0 / 100</div>
+          <div class="label" data-i18n="kpi_confirmed">Fundadores confirmados</div>
+          <div class="bar"><span id="barFill" style="width:0%"></span></div>
+        </div>
+        <div class="card">
+          <div class="kpi" id="kpiGoal">100</div>
+          <div class="label" data-i18n="kpi_goal">Meta de fundación</div>
+        </div>
+        <div class="card">
+          <div class="kpi" id="kpiTime" data-i18n="kpi_status_value">En curso</div>
+          <div class="label" data-i18n="kpi_status">Estado</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MURO -->
+    <section aria-labelledby="founders">
+      <h2 id="founders" data-i18n="founders_title">Muro de Fundadores</h2>
+      <p class="lead" data-i18n="founders_lead">Los visionarios que apostaron por el futuro de la educación con IA.</p>
+      <div class="founders-grid" id="foundersGrid"></div>
+      <div class="cta-row" style="margin-top:18px">
+        <a class="btn btn-gold" href="#tiers" data-i18n="founders_cta1">Asegurar mi lugar</a>
+        <a class="btn btn-dark" href="#tiers" data-i18n="founders_cta2">Ver Paquetes de Fundación</a>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section aria-labelledby="benefits">
+      <h2 id="benefits" data-i18n="benefits_title">Beneficios para Fundadores</h2>
+      <p class="lead" data-i18n="benefits_lead">Acceso anticipado, reconocimiento permanente y <strong>Descuento Vitalicio de Fundador</strong>.</p>
+      <div class="tiers">
+        <div class="tier">
+          <div class="price-strong gold-title" data-i18n="b1_title">Estatus &amp; Reconocimiento</div>
+          <ul class="ul" id="b1_list">
+            <li>Tu nombre en el <strong>Salón de Fundadores</strong> (web y evento).</li>
+            <li>Certificado digital exclusivo.</li>
+            <li>Prioridad en cupos limitados y pruebas beta.</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="price-strong gold-title" data-i18n="b2_title">Acceso &amp; Experiencias</div>
+          <ul class="ul" id="b2_list">
+            <li><strong>Acceso anticipado</strong> a clases y microcursos.</li>
+            <li>Sesiones privadas de Q&amp;A para fundadores.</li>
+            <li><strong>Descuento Vitalicio de Fundador</strong> activo desde tu primer aporte.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAQUETES -->
+    <section id="tiers" aria-labelledby="packages">
+      <h2 id="packages" data-i18n="tiers_title">Paquetes de Fundación</h2>
+      <p class="lead" data-i18n="tiers_lead">Compara con el precio normal (<strong>47 USD/mes = 564 USD/año</strong>) y elige tu acceso.</p>
+
+      <div class="tiers">
+        <!-- VIP -->
+        <div class="tier">
+          <span class="ribbon" data-i18n="ribbon_popular">Más Popular</span>
+          <h3 class="gold-title" style="margin:0" data-i18n="vip_title">Comunidad VIP Fundador</h3>
+          <div class="price"><span data-i18n="normal_price">Precio normal:</span> <strong>$564 / <span data-i18n="year">año</span></strong></div>
+          <div class="price-strong"><strong><span data-i18n="with_off">Con</span> 47% OFF — $299 / <span data-i18n="year">año</span></strong></div>
+          <ul class="ul" id="vip_list">
+            <li>12 meses de <strong>acceso VIP</strong> (mentorías grupales + Q&amp;A).</li>
+            <li><strong>Acceso anticipado</strong> a lanzamientos y betas.</li>
+            <li><strong>Descuento Vitalicio de Fundador</strong> activo.</li>
+            <li>Reconocimiento en el Salón de Fundadores.</li>
+          </ul>
+          <div class="cta-with-savings">
+            <button class="btn btn-gold" onclick="openGlobalPay('299', currentLang==='es' ? 'Comunidad VIP Fundador' : 'VIP Founder Community')" id="btnVip">$299 VIP</button>
+            <div class="savings-block">
+              <div class="line1" data-i18n="founder_price">Precio Especial Fundador</div>
+              <div class="line2">
+                <span class="tooltip" onclick="showTip(this)">
+                  <span id="vip_save" data-i18n="save_265">Ahorra $265</span> <span class="info">ℹ️</span>
+                  <span class="tip" id="vip_tip">564 – 299 = <strong>$265</strong></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="tier">
+          <h3 class="gold-title" style="margin:0" data-i18n="premium_title">Premium Fundador</h3>
+          <div class="price"><span data-i18n="normal_price">Precio normal:</span> <strong>$64</strong> <span class="compare">(17 + 47)</span></div>
+          <div class="price-strong"><strong><span data-i18n="with_off">Con</span> 30% OFF — $44</strong></div>
+          <ul class="ul" id="premium_list">
+            <li>Incluye <strong>Masterclass ($17)</strong> + <strong>1 mes Premium</strong>.</li>
+            <li><strong>Acceso total</strong> a la plataforma por 30 días.</li>
+            <li>Activa tu <strong>Descuento Vitalicio de Fundador</strong>.</li>
+            <li>Reconocimiento como Fundador Premium.</li>
+          </ul>
+          <div class="cta-with-savings">
+            <button class="btn btn-gold" onclick="openGlobalPay('44', currentLang==='es' ? 'Premium Fundador' : 'Premium Founder')" id="btnPremium">$44 Premium</button>
+            <div class="savings-block">
+              <div class="line1" data-i18n="founder_price">Precio Especial Fundador</div>
+              <div class="line2">
+                <span class="tooltip" onclick="showTip(this)">
+                  <span id="premium_save" data-i18n="save_20">Ahorra $20</span> <span class="info">ℹ️</span>
+                  <span class="tip" id="premium_tip">64 – 44 = <strong>$20</strong></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INICIAL -->
+        <div class="tier">
+          <h3 class="gold-title" style="margin:0" data-i18n="initial_title">Fundador Inicial · Masterclass</h3>
+          <div class="price"><span data-i18n="normal_price">Precio normal:</span> <strong>$17</strong></div>
+          <div class="price-strong"><strong><span data-i18n="with_off">Con</span> 35% OFF — $11</strong></div>
+          <ul class="ul" id="initial_list">
+            <li>Clase Cero + Caja de Herramientas + Cuaderno de Progreso.</li>
+            <li>Activa tu <strong>Descuento Vitalicio de Fundador</strong> desde hoy.</li>
+            <li>Acceso preferente a upgrades (Premium, VIP).</li>
+          </ul>
+          <div class="cta-with-savings">
+            <button class="btn btn-gold" onclick="openGlobalPay('11', currentLang==='es' ? 'Fundador Inicial · Masterclass' : 'Initial Founder · Masterclass')" id="btnInitial">$11 Masterclass</button>
+            <div class="savings-block">
+              <div class="line1" data-i18n="founder_price">Precio Especial Fundador</div>
+              <div class="line2">
+                <span class="tooltip" onclick="showTip(this)">
+                  <span id="initial_save" data-i18n="save_6">Ahorra $6</span> <span class="info">ℹ️</span>
+                  <span class="tip" id="initial_tip">17 – 11 = <strong>$6</strong></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Privilegios -->
+        <div class="tier" style="text-align:center">
+          <h3 class="gold-title" style="margin:0 0 6px" data-i18n="whats_vip">¿Qué incluye la VIP?</h3>
+          <p class="lead" style="margin:0 0 12px" data-i18n="vip_lead">Descubre por qué la Comunidad VIP es el corazón de StarLion.</p>
+          <button class="btn btn-gold" onclick="openPerks()" data-i18n="chip_privs">Privilegios dentro de la Comunidad VIP ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span data-i18n="footer_phrase">StarLion Academy — “Donde la magia ocurre con IA.”</span> · © <span id="year"></span> · <span data-i18n="rights">Todos los derechos reservados.</span>
+      <div class="fine" style="margin-top:6px">
+        <span data-i18n="support">Soporte:</span> <a href="mailto:contacto@starlion.academy">contacto@starlion.academy</a> · WhatsApp <a href="https://wa.me/573001464083" target="_blank" rel="noopener">+57 300 146 4083</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== MODAL PAGO GLOBAL (USD/EUR) ===== -->
+  <div id="globalPayModal" class="backdrop" onclick="if(event.target.id==='globalPayModal') closeGlobalPay()">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:720px">
+      <h3 style="margin:0 0 8px;color:#D4AF37"><span data-i18n="pay_for">Pago para</span> <span id="gpPlan">—</span></h3>
+      <div style="color:#bbb;margin:0 0 12px" data-i18n="choose_currency">Selecciona tu moneda y copia los datos para transferir.</div>
+
+      <!-- Selector USD / EUR -->
+      <div class="tabs" style="display:flex;gap:8px;margin-bottom:12px">
+        <button id="tabUSD" class="tab active" onclick="switchCurrency('USD')">USD (ACH / Wire)</button>
+        <button id="tabEUR" class="tab" onclick="switchCurrency('EUR')">EUR (SEPA / IBAN)</button>
+      </div>
+
+      <!-- Resumen de monto -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <div style="background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:8px 12px;color:#ddd">
+          <span data-i18n="suggested_amount">Monto sugerido:</span> <strong id="gpAmount">$299</strong>
+        </div>
+        <div style="font-size:12px;color:#888" data-i18n="note_amount">* Puedes indicar otro monto si tu banco lo requiere.</div>
+      </div>
+
+      <!-- USD -->
+      <div id="paneUSD">
+        <div class="grid">
+          <div class="field">
+            <label data-i18n="usd_benef_label">Nombre del destinatario</label>
+            <code id="usd_benef">Fabian Andres Garcia Amaya</code>
+            <button class="copy" onclick="copyField('usd_benef', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="usd_bank_label">Nombre del banco</label>
+            <code id="usd_bank">Lead Bank</code>
+            <button class="copy" onclick="copyField('usd_bank', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="usd_aba_label">ABA / Nº de ruta</label>
+            <code id="usd_aba">101019644</code>
+            <button class="copy" onclick="copyField('usd_aba', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="usd_acc_label">Nº de cuenta</label>
+            <code id="usd_acc">217822359330</code>
+            <button class="copy" onclick="copyField('usd_acc', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="usd_type_label">Tipo de cuenta</label>
+            <code id="usd_type">Corriente</code>
+            <button class="copy" onclick="copyField('usd_type', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="usd_addr_label">Dirección del banco</label>
+            <code id="usd_addr">1801 Main St, Kansas City, Missouri 64108, Estados Unidos</code>
+            <button class="copy" onclick="copyField('usd_addr', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+        </div>
+        <div class="note"><span data-i18n="fee_est">Comisión estimada del banco receptor:</span> <strong>~$3</strong>. <span data-i18n="use_ref">Usa el concepto de pago:</span> <code id="usd_ref">FOUNDER-<span id="gpAmountShort">299</span>-NOMBRE</code></div>
+      </div>
+
+      <!-- EUR -->
+      <div id="paneEUR" style="display:none">
+        <div class="grid">
+          <div class="field">
+            <label data-i18n="eur_benef_label">Nombre del destinatario</label>
+            <code id="eur_benef">Bridge Building</code>
+            <button class="copy" onclick="copyField('eur_benef', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="eur_country_label">País</label>
+            <code id="eur_country">Irlanda</code>
+            <button class="copy" onclick="copyField('eur_country', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="eur_iban_label">IBAN</label>
+            <code id="eur_iban">IE45 MODR 9903 5505 7957 37</code>
+            <button class="copy" onclick="copyField('eur_iban', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="eur_type_label">Tipo de cuenta</label>
+            <code id="eur_type">Empresa</code>
+            <button class="copy" onclick="copyField('eur_type', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="eur_accaddr_label">Dirección de la cuenta</label>
+            <code id="eur_acc_addr">Bartycka 22B/21A, Warsaw 00-716, Polonia</code>
+            <button class="copy" onclick="copyField('eur_acc_addr', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+          <div class="field">
+            <label data-i18n="eur_bank_label">Nombre y dirección del banco</label>
+            <code id="eur_bank">Modulr Finance B.V., 2 Grand Canal Square Floor 6, Dublin D02, Irlanda</code>
+            <button class="copy" onclick="copyField('eur_bank', this)" data-i18n="copy_btn">Copiar</button>
+          </div>
+        </div>
+        <div class="note"><span data-i18n="fee_est">Comisión estimada del banco receptor:</span> <strong>~€3</strong>. <span data-i18n="use_ref">Usa el concepto de pago:</span> <code id="eur_ref">FOUNDER-<span id="gpAmountShort2">299</span>-NOMBRE</code></div>
+      </div>
+
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+        <a class="btn btn-dark" id="gpWaPaid"
+           href="https://wa.me/573001464083?text=Hola%20StarLion%20Academy%2C%20ya%20hice%20mi%20transferencia%20como%20Fundador.%20Adjunto%20comprobante.%20Plan%3A%20"
+           target="_blank" rel="noopener" data-i18n="i_paid">Ya pagué</a>
+        <button class="btn btn-gold" onclick="closeGlobalPay()" data-i18n="close">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL PRIVILEGIOS ===== -->
+  <div id="perksModal" class="backdrop" onclick="if(event.target.id==='perksModal') closePerks()">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width:680px">
+      <h3 style="margin:0 0 6px;color:#D4AF37" data-i18n="perks_title">Privilegios dentro de la Comunidad VIP ✨</h3>
+      <p class="fine" style="margin:0 0 14px;color:#ddd" data-i18n="perks_lead">Lo que recibes desde el día 1</p>
+
+      <ul style="margin:0 0 14px 18px;line-height:1.55;color:#ddd" id="perks_list">
+        <li>🧠 <strong>Entorno inspirador</strong>: incubadora de ideas para avanzar sin fricción.</li>
+        <li>🎮 <strong>Gamificación real</strong>: retos, bonus, puntos y desbloqueos (plantillas &amp; prompts).</li>
+        <li>🎥 <strong>Masterclass quincenales</strong>: negocio, ventas, marketing, finanzas y cuántica, siempre con IA.</li>
+        <li>🎟️ <strong>Eventos exclusivos</strong>: primero virtuales, luego presenciales a medida que crecemos.</li>
+        <li>🌟 <strong>Liderazgo</strong>: posibilidad de ser <strong>Embajador VIP</strong> con beneficios extra.</li>
+        <li>♻️ <strong>Actualización continua</strong>: módulos, clases y recursos frescos cada mes.</li>
+      </ul>
+
+      <div style="background:#0a0a0a;border:1px solid #222;border-radius:12px;padding:12px;color:#cfcfcf;margin-bottom:12px" id="perks_box">
+        ✨ <strong>Aprendizaje natural:</strong> mientras creas tu proyecto, te sumerges en IA y nuevas herramientas de forma intuitiva.
+      </div>
+
+      <div class="fine" style="margin-bottom:12px" id="perks_warn">⚠️ Si cancelas y vuelves, podrías ingresar al <strong>precio normal</strong> sin beneficios de Fundador.</div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <a class="btn btn-gold" href="#tiers" onclick="closePerks()" data-i18n="see_packages">Ver Paquetes de Fundación</a>
+        <button class="btn btn-dark" onclick="closePerks()" data-i18n="close">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Estado inicial =====
+    const GOAL = 100;
+    const FOUNDERS = [
+      { name: "M. García",   city: "Los Ángeles, CA (USA)",           date:"2025-08-19" },
+      { name: "C. Pérez",    city: "San Francisco, CA (USA)",         date:"2025-08-20" },
+      { name: "L. Torres",   city: "San Mateo, CA (USA)",             date:"2025-08-20" },
+      { name: "R. Díaz",     city: "East Palo Alto, CA (USA)",        date:"2025-08-21" },
+      { name: "S. López",    city: "Nueva York, NY (USA)",            date:"2025-08-21" },   <!-- Queens/Bronx grandes comunidades -->
+      { name: "J. Castillo", city: "Houston, TX (USA)",               date:"2025-08-22" },
+      { name: "P. Morales",  city: "San Antonio, TX (USA)",           date:"2025-08-22" },
+      { name: "V. Herrera",  city: "Phoenix, AZ (USA)",               date:"2025-08-23" },
+      { name: "E. Ramírez",  city: "Chicago, IL (USA)",               date:"2025-08-23" },   <!-- Pilsen/Little Village -->
+      { name: "N. Martín",   city: "Madrid (España)",                 date:"2025-08-24" },
+      { name: "I. Navarro",  city: "Barcelona (España)",              date:"2025-08-24" },
+      { name: "G. Rojas",    city: "Ibiza (España)",                  date:"2025-08-24" },
+      { name: "S. Vega",     city: "Valencia (España)",               date:"2025-08-25" },
+      { name: "K. O’Brien",  city: "Londres (Inglaterra)",            date:"2025-08-25" },
+      { name: "F. Álvarez",  city: "Toronto (Canadá)",                date:"2025-08-26" },
+      { name: "L. Pérez",    city: "Oslo (Noruega)",                  date:"2025-08-26" },
+    ];
+    const $grid=document.getElementById('foundersGrid');
+    const $kpiCount=document.getElementById('kpiCount');
+    const $bar=document.getElementById('barFill');
+    const $year=document.getElementById('year'); $year.textContent=new Date().getFullYear();
+    function initials(n){ const p=n.split(' ').filter(Boolean); return (p[0]?.[0]||'')+(p[1]?.[0]||''); }
+    function renderFounders(){
+      $grid.innerHTML='';
+      FOUNDERS.forEach(f=>{
+        const d=document.createElement('div'); d.className='founder';
+        d.innerHTML=`<div class="avatar">${initials(f.name).toUpperCase()}</div>
+                     <div class="fname">${f.name}</div>
+                     <div class="fmeta">${f.city||''} ${f.date?'· '+f.date:''}</div>`;
+        $grid.appendChild(d);
+      });
+      const c=FOUNDERS.length, pct=Math.min(100,(c/GOAL)*100);
+      $kpiCount.textContent=`${c} / ${GOAL}`; $bar.style.width=pct+'%';
+    }
+    renderFounders();
+
+    // ===== Tooltips (mobile tap) =====
+    function showTip(el){ el.classList.add('show'); setTimeout(()=>el.classList.remove('show'), 2000); }
+
+    // ===== Modales =====
+    function openPerks(){ document.getElementById('perksModal').style.display='block'; }
+    function closePerks(){ document.getElementById('perksModal').style.display='none'; }
+    function openGlobalPay(amountUsd, planLabel){
+      document.getElementById('gpPlan').textContent = planLabel || '—';
+      document.getElementById('gpAmount').textContent = '$' + amountUsd;
+      document.getElementById('gpAmountShort').textContent = amountUsd;
+      document.getElementById('gpAmountShort2').textContent = amountUsd;
+      const wa=document.getElementById('gpWaPaid');
+      const txt = (currentLang==='es'
+        ? 'Hola StarLion Academy, ya hice mi transferencia como Fundador.\n\n'
+        : 'Hi StarLion Academy, I already made my transfer as a Founder.\n\n');
+      const planWord = (currentLang==='es' ? 'Plan: ' : 'Plan: ');
+      const amountWord = (currentLang==='es' ? 'Monto: $' : 'Amount: $');
+      const currencyWord = (currentLang==='es' ? 'Moneda: USD/EUR\nAdjunto comprobante.\n\nNombre: '
+                                               : 'Currency: USD/EUR\nReceipt attached.\n\nName: ');
+      wa.href='https://wa.me/573001464083?text='+encodeURIComponent(
+        txt + planWord + (planLabel||'') + '\n' + amountWord + amountUsd + '\n' + currencyWord
+      );
+      switchCurrency('USD');
+      document.getElementById('globalPayModal').style.display='block';
+    }
+    function closeGlobalPay(){ document.getElementById('globalPayModal').style.display='none'; }
+
+    function switchCurrency(cur){
+      const usd=document.getElementById('paneUSD');
+      const eur=document.getElementById('paneEUR');
+      const tUSD=document.getElementById('tabUSD');
+      const tEUR=document.getElementById('tabEUR');
+      if(cur==='USD'){ usd.style.display='block'; eur.style.display='none'; tUSD.classList.add('active'); tEUR.classList.remove('active'); }
+      else { usd.style.display='none'; eur.style.display='block'; tEUR.classList.add('active'); tUSD.classList.remove('active'); }
+    }
+
+    // ===== Copiar con fallback =====
+    function copyField(id, btn){
+      const text=document.getElementById(id).textContent.trim();
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(()=>feedback(btn, copyMsg())).catch(()=>fallback(text,btn));
+      }else{ fallback(text,btn); }
+    }
+    function fallback(text,btn){
+      try{
+        const ta=document.createElement('textarea');
+        ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0,ta.value.length);
+        const ok=document.execCommand('copy'); document.body.removeChild(ta);
+        feedback(btn, ok?copyMsg():manualMsg());
+      }catch{ feedback(btn, manualMsg()); }
+    }
+    function feedback(btn,msg){ const old=btn.textContent; btn.textContent=msg; setTimeout(()=>btn.textContent=old,1400); }
+    function copyMsg(){ return currentLang==='es' ? '¡Copiado!' : 'Copied'; }
+    function manualMsg(){ return currentLang==='es' ? 'Copia manual' : 'Copy manually'; }
+
+    // ===== I18N =====
+    let currentLang = 'es'; // por defecto ES
+    const T = {
+      es: {
+        badge:"⭐ Salón de Fundadores · Cupos limitados",
+        h1_1:"Únete al", h1_2:"de StarLion Academy",
+        cta_primary:"Quiero ser Fundador",
+        cta_support:"Soporte Pagos",
+        chip_privs:"Privilegios dentro de la Comunidad VIP ✨",
+        kpi_confirmed:"Fundadores confirmados",
+        kpi_goal:"Meta de fundación",
+        kpi_status:"Estado",
+        kpi_status_value:"En curso",
+        founders_title:"Muro de Fundadores",
+        founders_lead:"Los visionarios que apostaron por el futuro de la educación con IA.",
+        founders_cta1:"Asegurar mi lugar",
+        founders_cta2:"Ver Paquetes de Fundación",
+        benefits_title:"Beneficios para Fundadores",
+        benefits_lead:"Acceso anticipado, reconocimiento permanente y <strong>Descuento Vitalicio de Fundador</strong>.",
+        b1_title:"Estatus &amp; Reconocimiento",
+        b2_title:"Acceso &amp; Experiencias",
+        tiers_title:"Paquetes de Fundación",
+        tiers_lead:"Compara con el precio normal (<strong>47 USD/mes = 564 USD/año</strong>) y elige tu acceso.",
+        ribbon_popular:"Más Popular",
+        vip_title:"Comunidad VIP Fundador",
+        premium_title:"Premium Fundador",
+        initial_title:"Fundador Inicial · Masterclass",
+        normal_price:"Precio normal:",
+        with_off:"Con",
+        year:"año",
+        founder_price:"Precio Especial Fundador",
+        save_265:"Ahorra $265",
+        save_20:"Ahorra $20",
+        save_6:"Ahorra $6",
+        whats_vip:"¿Qué incluye la VIP?",
+        vip_lead:"Descubre por qué la Comunidad VIP es el corazón de StarLion.",
+        footer_phrase:"StarLion Academy — “Donde la magia ocurre con IA.”",
+        rights:"Todos los derechos reservados.",
+        support:"Soporte:",
+        pay_for:"Pago para",
+        choose_currency:"Selecciona tu moneda y copia los datos para transferir.",
+        suggested_amount:"Monto sugerido:",
+        note_amount:"* Puedes indicar otro monto si tu banco lo requiere.",
+        fee_est:"Comisión estimada del banco receptor:",
+        use_ref:"Usa el concepto de pago:",
+        i_paid:"Ya pagué",
+        close:"Cerrar",
+        perks_title:"Privilegios dentro de la Comunidad VIP ✨",
+        perks_lead:"Lo que recibes desde el día 1",
+        see_packages:"Ver Paquetes de Fundación",
+      },
+      en: {
+        badge:"⭐ Founders Hall · Limited spots",
+        h1_1:"Join the", h1_2:"Founders Hall of StarLion Academy",
+        cta_primary:"Become a Founder",
+        cta_support:"Payment Support",
+        chip_privs:"VIP Community Privileges ✨",
+        kpi_confirmed:"Confirmed founders",
+        kpi_goal:"Funding goal",
+        kpi_status:"Status",
+        kpi_status_value:"Live",
+        founders_title:"Founders Wall",
+        founders_lead:"Early believers shaping the future of AI education.",
+        founders_cta1:"Secure my spot",
+        founders_cta2:"See Founder Packages",
+        benefits_title:"Benefits for Founders",
+        benefits_lead:"Early access, permanent recognition and a <strong>Lifetime Founder Discount</strong>.",
+        b1_title:"Status &amp; Recognition",
+        b2_title:"Access &amp; Experiences",
+        tiers_title:"Founder Packages",
+        tiers_lead:"Compare with normal pricing (<strong>$47/month = $564/year</strong>) and choose your access.",
+        ribbon_popular:"Most popular",
+        vip_title:"VIP Founder Community",
+        premium_title:"Premium Founder",
+        initial_title:"Initial Founder · Masterclass",
+        normal_price:"Normal price:",
+        with_off:"With",
+        year:"year",
+        founder_price:"Special Founder Price",
+        save_265:"Save $265",
+        save_20:"Save $20",
+        save_6:"Save $6",
+        whats_vip:"What’s included in VIP?",
+        vip_lead:"Discover why the VIP Community is StarLion’s core.",
+        footer_phrase:"StarLion Academy — “Where AI magic happens.”",
+        rights:"All rights reserved.",
+        support:"Support:",
+        pay_for:"Payment for",
+        choose_currency:"Choose your currency and copy transfer details.",
+        suggested_amount:"Suggested amount:",
+        note_amount:"* You can send a different amount if your bank requires it.",
+        fee_est:"Estimated receiver fee:",
+        use_ref:"Use payment reference:",
+        i_paid:"I’ve paid",
+        close:"Close",
+        perks_title:"VIP Community Privileges ✨",
+        perks_lead:"What you receive from day one",
+        see_packages:"See Founder Packages",
+      }
+    };
+
+    function setLang(lang){
+      currentLang = (lang==='en') ? 'en' : 'es';
+      // Botones activos
+      document.getElementById('langES').classList.toggle('active', currentLang==='es');
+      document.getElementById('langEN').classList.toggle('active', currentLang==='en');
+
+      // Textos simples con data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        const txt = T[currentLang][key];
+        if (txt !== undefined) el.innerHTML = txt;
+      });
+
+      // Tooltips y ahorros
+      document.getElementById('vip_tip').innerHTML = currentLang==='es' ? '564 – 299 = <strong>$265</strong>' : '564 – 299 = <strong>$265</strong>';
+      document.getElementById('premium_tip').innerHTML = currentLang==='es' ? '64 – 44 = <strong>$20</strong>'  : '64 – 44 = <strong>$20</strong>';
+      document.getElementById('initial_tip').innerHTML = currentLang==='es' ? '17 – 11 = <strong>$6</strong>'     : '17 – 11 = <strong>$6</strong>';
+
+      // Listas (beneficios y perks) si quieres variantes muy específicas
+      if (currentLang==='en'){
+        document.getElementById('b1_list').innerHTML = `
+          <li>Your name in the <strong>Founders Hall</strong> (web & event).</li>
+          <li>Exclusive digital certificate.</li>
+          <li>Priority for limited seats & beta tests.</li>`;
+        document.getElementById('b2_list').innerHTML = `
+          <li><strong>Early access</strong> to classes and micro-courses.</li>
+          <li>Private Q&amp;A sessions for founders.</li>
+          <li><strong>Lifetime Founder Discount</strong> active from day one.</li>`;
+        document.getElementById('vip_list').innerHTML = `
+          <li>12 months of <strong>VIP access</strong> (group mentorship + Q&amp;A).</li>
+          <li><strong>Early access</strong> to launches and betas.</li>
+          <li><strong>Lifetime Founder Discount</strong> enabled.</li>
+          <li>Recognition in the Founders Hall.</li>`;
+        document.getElementById('premium_list').innerHTML = `
+          <li>Includes <strong>Masterclass ($17)</strong> + <strong>1 month Premium</strong>.</li>
+          <li><strong>Full access</strong> to the platform for 30 days.</li>
+          <li>Activates your <strong>Lifetime Founder Discount</strong>.</li>
+          <li>Recognition as Premium Founder.</li>`;
+        document.getElementById('initial_list').innerHTML = `
+          <li>Zero Class + Toolbox + Progress Notebook.</li>
+          <li>Activates your <strong>Lifetime Founder Discount</strong> from day one.</li>
+          <li>Preferential upgrade path (Premium, VIP).</li>`;
+        document.getElementById('perks_list').innerHTML = `
+          <li>🧠 <strong>Inspiring environment</strong>: idea incubator to move forward smoothly.</li>
+          <li>🎮 <strong>Real gamification</strong>: challenges, bonuses, points and unlocks (templates &amp; prompts).</li>
+          <li>🎥 <strong>Bi-weekly masterclasses</strong>: business, sales, marketing, finance & quantum—with AI.</li>
+          <li>🎟️ <strong>Exclusive events</strong>: virtual first, then in-person as we grow.</li>
+          <li>🌟 <strong>Leadership</strong>: chance to become a <strong>VIP Ambassador</strong> with extra benefits.</li>
+          <li>♻️ <strong>Continuous updates</strong>: fresh modules, classes and resources every month.</li>`;
+        document.getElementById('perks_box').innerHTML = `✨ <strong>Natural learning:</strong> while you build your project, you immerse in AI and new tools intuitively.`;
+        document.getElementById('perks_warn').innerHTML = `⚠️ If you cancel and come back later, you may rejoin at the <strong>normal price</strong> without Founder benefits.`;
+
+        // Botones paquetes
+        document.getElementById('btnVip').textContent = '$299 VIP';
+        document.getElementById('btnPremium').textContent = '$44 Premium';
+        document.getElementById('btnInitial').textContent = '$11 Masterclass';
+
+        // WA soporte
+        document.getElementById('supportWA').href = 'https://wa.me/573001464083?text=Hi%20StarLion%20Academy%2C%20I%20need%20help%20with%20my%20payment.';
+      } else {
+        // Listas ES
+        document.getElementById('b1_list').innerHTML = `
+          <li>Tu nombre en el <strong>Salón de Fundadores</strong> (web y evento).</li>
+          <li>Certificado digital exclusivo.</li>
+          <li>Prioridad en cupos limitados y pruebas beta.</li>`;
+        document.getElementById('b2_list').innerHTML = `
+          <li><strong>Acceso anticipado</strong> a clases y microcursos.</li>
+          <li>Sesiones privadas de Q&amp;A para fundadores.</li>
+          <li><strong>Descuento Vitalicio de Fundador</strong> activo desde tu primer aporte.</li>`;
+        document.getElementById('vip_list').innerHTML = `
+          <li>12 meses de <strong>acceso VIP</strong> (mentorías grupales + Q&amp;A).</li>
+          <li><strong>Acceso anticipado</strong> a lanzamientos y betas.</li>
+          <li><strong>Descuento Vitalicio de Fundador</strong> activo.</li>
+          <li>Reconocimiento en el Salón de Fundadores.</li>`;
+        document.getElementById('premium_list').innerHTML = `
+          <li>Incluye <strong>Masterclass ($17)</strong> + <strong>1 mes Premium</strong>.</li>
+          <li><strong>Acceso total</strong> a la plataforma por 30 días.</li>
+          <li>Activa tu <strong>Descuento Vitalicio de Fundador</strong>.</li>
+          <li>Reconocimiento como Fundador Premium.</li>`;
+        document.getElementById('initial_list').innerHTML = `
+          <li>Clase Cero + Caja de Herramientas + Cuaderno de Progreso.</li>
+          <li>Activa tu <strong>Descuento Vitalicio de Fundador</strong> desde hoy.</li>
+          <li>Acceso preferente a upgrades (Premium, VIP).</li>`;
+        document.getElementById('perks_list').innerHTML = `
+          <li>🧠 <strong>Entorno inspirador</strong>: incubadora de ideas para avanzar sin fricción.</li>
+          <li>🎮 <strong>Gamificación real</strong>: retos, bonus, puntos y desbloqueos (plantillas &amp; prompts).</li>
+          <li>🎥 <strong>Masterclass quincenales</strong>: negocio, ventas, marketing, finanzas y cuántica, siempre con IA.</li>
+          <li>🎟️ <strong>Eventos exclusivos</strong>: primero virtuales, luego presenciales a medida que crecemos.</li>
+          <li>🌟 <strong>Liderazgo</strong>: posibilidad de ser <strong>Embajador VIP</strong> con beneficios extra.</li>
+          <li>♻️ <strong>Actualización continua</strong>: módulos, clases y recursos frescos cada mes.</li>`;
+        document.getElementById('perks_box').innerHTML = `✨ <strong>Aprendizaje natural:</strong> mientras creas tu proyecto, te sumerges en IA y nuevas herramientas de forma intuitiva.`;
+        document.getElementById('perks_warn').innerHTML = `⚠️ Si cancelas y vuelves, podrías ingresar al <strong>precio normal</strong> sin beneficios de Fundador.`;
+
+        document.getElementById('btnVip').textContent = '$299 VIP';
+        document.getElementById('btnPremium').textContent = '$44 Premium';
+        document.getElementById('btnInitial').textContent = '$11 Masterclass';
+
+        document.getElementById('supportWA').href = 'https://wa.me/573001464083?text=Hola%20StarLion%20Academy%2C%20necesito%20ayuda%20con%20mi%20pago.';
+      }
+    }
+
+    // Iniciar ES
+    setLang('es');
+  </script>
+</body>
+</html>
