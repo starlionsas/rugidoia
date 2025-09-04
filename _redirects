@@ -4,6 +4,21 @@
 /youtube https://www.youtube.com/@Rugido_IA 301!
 /facebook https://www.facebook.com/RugidoIA 301!
 /Fabian /fundador?ref=FABIAN&wa=573123868054   301
-/MeInteresa https://wa.me/573123868054?text=Hola%2C%20me%20interesa%20saber%20de%20qué%20se%20trata.  301!
-/Herman /fundador?ref=HERMAN&wa=573107964897   301
-/LIVE https://meet.google.com/spu-erum-nvk 301!
+
+# ------------------------------------------
+# Rutas principales
+# ------------------------------------------
+
+# Ruta principal genérica (link universal)
+/MeInteresa   https://wa.me/573123868054?text=Hola!%20Me%20interesa 301!
+
+# Alias de seguridad (por si alguien escribe "Escribenos")
+/Escribenos   /MeInteresa 301!
+
+# ------------------------------------------
+# Versiones cortas con UTM por red
+# ------------------------------------------
+
+/MeInteresa.t   https://wa.me/573123868054?text=Hola!%20Me%20interesa&utm_source=tiktok&utm_medium=bio&utm_campaign=starlion 301!
+/MeInteresa.i   https://wa.me/573123868054?text=Hola!%20Me%20interesa&utm_source=instagram&utm_medium=bio&utm_campaign=starlion 301!
+/MeInteresa.y   https://wa.me/573123868054?text=Hola!%20Me%20interesa&utm_source=youtube&utm_medium=bio&utm_campaign=starlion 301!
