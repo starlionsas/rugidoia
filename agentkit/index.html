@@ -1,273 +1,215 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Guía Oficial de AgentKit – StarLion Academy™ (Colección 2025)</title>
-  <meta name="description" content="Crea tus propios agentes de IA sin ser programador. Guía premium paso a paso para dominar AgentKit de OpenAI. Acceso inmediato vía Hotmart. Precio especial $17 USD (antes $24)." />
-  <link rel="canonical" href="https://rugidoia.com/agentkit/" />
-  <link rel="icon" href="/img/favicon.png" sizes="any" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guía oficial AgentKit – Aprende paso a paso a crear tus propios agentes de IA con StarLion Academy. Acceso inmediato vía Hotmart." />
+  <meta name="keywords" content="AgentKit, OpenAI, StarLion Academy, inteligencia artificial, curso IA, Hotmart, agentes IA" />
+  <meta name="author" content="StarLion Academy" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="product" />
-  <meta property="og:title" content="Guía Oficial de AgentKit – StarLion Academy™" />
-  <meta property="og:description" content="Aprende a crear agentes de IA paso a paso con AgentKit de OpenAI. Edición de Colección 2025. Acceso inmediato." />
-  <meta property="og:image" content="https://rugidoia.com/img/agentkit-cover.jpg" />
-  <meta property="og:url" content="https://rugidoia.com/agentkit/" />
+  <title>AgentKit – Guía Oficial | StarLion Academy</title>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Guía Oficial de AgentKit – StarLion Academy™" />
-  <meta name="twitter:description" content="Crea tus propios agentes de IA sin ser programador. Acceso inmediato en Hotmart." />
-  <meta name="twitter:image" content="https://rugidoia.com/img/agentkit-cover.jpg" />
+  <link rel="icon" href="../img/logo-starlion.png" type="image/png" />
 
-  <!-- JSON-LD Product + FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Guía Oficial de AgentKit – StarLion Academy™ (Colección 2025)",
-    "image":"https://rugidoia.com/img/agentkit-cover.jpg",
-    "description":"Guía premium paso a paso para crear agentes de IA con AgentKit de OpenAI.",
-    "brand":{"@type":"Brand","name":"StarLion Academy"},
-    "offers":{
-      "@type":"Offer",
-      "priceCurrency":"USD",
-      "price":"17.00",
-      "url":"https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT",
-      "availability":"https://schema.org/InStock"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"¿Necesito saber programar?",
-       "acceptedAnswer":{"@type":"Answer","text":"No. La guía está pensada para principiantes y te lleva paso a paso con ejemplos prácticos."}},
-      {"@type":"Question","name":"¿El libro es físico o digital?",
-       "acceptedAnswer":{"@type":"Answer","text":"Es digital (PDF premium). Acceso inmediato después de la compra a través de Hotmart."}},
-      {"@type":"Question","name":"¿Puedo leerla desde el celular?",
-       "acceptedAnswer":{"@type":"Answer","text":"Sí. Es compatible con móvil, tablet y computador."}},
-      {"@type":"Question","name":"¿Incluye actualizaciones?",
-       "acceptedAnswer":{"@type":"Answer","text":"Sí. La Colección 2025 incluye mejoras y recursos extra sin costo adicional."}}
-    ]
-  }
-  </script>
-
-  <!-- Estilos -->
   <style>
-    :root{
-      --bg:#0b0b0c; --panel:#121316F2; --border:#1f2026;
-      --gold:#CDAF69; --gold2:#FFD26A; --txt:#ECECF3; --muted:#A4A7B3; --ivory:#F5EBD0; --card:#0F1013;
+    :root {
+      --gold: #ffd700;
+      --gold2: #ffcc00;
+      --ivory: #f8f8f6;
+      --bg-dark: #0b0b0d;
+      --border: #2c2c2c;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg) url('/img/decoracion.png') center/cover fixed no-repeat;color:var(--txt);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:auto;padding:24px}
-    .hero{display:grid;gap:18px;align-items:center}
-    @media(min-width:980px){.hero{grid-template-columns:1.1fr .9fr}}
-    .panel{background:var(--panel);border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:0 18px 60px #0008}
-    .brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-    .brand img{width:36px;height:36px}
-    h1{margin:.2rem 0 .6rem;color:var(--ivory);font-size:clamp(28px,4vw,44px)}
-    p.muted{color:var(--muted);margin:.3rem 0 1rem}
-    .badge{display:inline-block;border:1px solid var(--gold);color:var(--ivory);padding:6px 12px;border-radius:999px;font-size:12px}
-    .cta{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#111;padding:14px 22px;border-radius:14px;font-weight:800;text-decoration:none}
-    .cta:hover{filter:brightness(1.06)}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    @media(max-width:720px){.kpis{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .price{font-size:22px}
-    .price .old{text-decoration:line-through;color:#8a8a8a}
-    .price .new{color:var(--gold2);font-weight:800}
-    .timer{font-variant-numeric:tabular-nums;color:var(--gold2);font-weight:800}
-    .media{border-radius:16px;border:1px solid var(--border);overflow:hidden}
-    .video{aspect-ratio:16/9;background:#000}
-    .poster{width:100%;display:block}
-    details summary{cursor:pointer;font-weight:700;margin-bottom:6px}
-    footer{opacity:.8;font-size:13px;margin-top:18px;text-align:center}
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--ivory);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .panel {
+      background-color: #111;
+      border-radius: 20px;
+      padding: 60px;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px #0006;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (min-width: 980px) {
+      .hero {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .badge {
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      color: #111;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: 800;
+      margin-top: 0.3em;
+    }
+
+    p {
+      font-size: 1.05em;
+      color: #ddd;
+    }
+
+    .muted {
+      color: #aaa;
+    }
+
+    .cta {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      color: #111;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .cta:hover {
+      filter: brightness(1.06);
+    }
+
+    .poster-container {
+      max-width: 640px;
+      justify-self: end;
+    }
+
+    .poster {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 60px #000a;
+      object-fit: cover;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 30px;
+      font-size: 0.9em;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
   </style>
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel Code -->
   <script>
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init','1158672146326642'); fbq('track','PageView'); fbq('trackCustom','ViewAgentKit');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1158672146326642');
+    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1158672146326642&ev=PageView&noscript=1"/></noscript>
+    src="https://www.facebook.com/tr?id=1158672146326642&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <!-- TikTok Pixel -->
   <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
-    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],
-    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat([].slice.call(arguments,0)))}};
-    for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
-    ttq.instance=function(t){var e=ttq._i[t]||[];for(var n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
-    ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";
-      ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};
-      var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=r+"?sdkid="+e+"&lib="+t;
-      var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-    ttq.load('D1E11VRC77U0E4LNPBF0'); ttq.page(); ttq.track('ViewContent');
-  }(window, document, 'ttq');
-  </script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+      var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+      ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
-  <!-- Clarity (opcional) -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "t5p1sdm3sq");
+
+      ttq.load('D1E11VRC77U0E4LNPBF0');
+      ttq.page();
+    }(window, document, 'ttq');
   </script>
+  <!-- End TikTok Pixel -->
 </head>
 
 <body>
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-  <div class="brand">
-    <img src="../img/logo-starlion.png" alt="StarLion Academy logo" />
-    <span class="badge">Colección 2025</span>
-    <h1>Crea tus propios agentes de IA sin ser programador.</h1>
-    <p class="muted">
-      La guía premium paso a paso para dominar <strong>AgentKit de OpenAI</strong>. Acceso inmediato vía Hotmart.
-    </p>
-    <p class="cta-container">
-      <a class="cta-top" href="https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT?utm_source=landing&utm_medium=cta_top&utm_campaign=agentkit_2025" target="_blank" rel="nofollow">
-        🟡 Quiero mi guía ahora
-      </a>
-    </p>
-    <small class="muted">StarLion Academy™ — Donde la magia ocurre con IA.</small>
-  </div>
 
-  <!-- Imagen principal hero -->
-  <div class="poster-container">
-    <img class="poster" src="img/agentkit-hero.jpg" alt="Guía AgentKit – StarLion Academy – Crea tus propios agentes de IA" loading="lazy" />
-  </div>
-</section>
-
-    <!-- VIDEO PRINCIPAL -->
-    <section style="margin-top:18px">
-      <div class="panel media">
-        <video class="video" id="video-main" controls playsinline preload="metadata" poster="/img/agentkit-book.jpg">
-          <!-- Aloja en Bunny/CDN y reemplaza la URL -->
-          <source src="https://cdn.tu-dominio.com/media/agentkit-video-main.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
-        </video>
+  <!-- HERO -->
+  <section class="panel hero" id="hero">
+    <div>
+      <div class="brand">
+        <img src="../img/logo-starlion.png" alt="StarLion Academy logo" />
+        <span class="badge">Colección 2025</span>
       </div>
-    </section>
 
-    <!-- KPIs -->
-    <section class="kpis" style="margin-top:18px">
-      <div class="card" style="text-align:center"><strong>8–10 h</strong><div class="muted">ahorro semanal</div></div>
-      <div class="card" style="text-align:center"><strong>+1,200</strong><div class="muted">lectores LatAm</div></div>
-      <div class="card" style="text-align:center"><strong>4.9/5</strong><div class="muted">satisfacción</div></div>
-    </section>
-
-    <!-- OFERTA -->
-    <section class="panel" style="margin-top:18px">
-      <h2 style="margin:0 0 6px;color:var(--ivory)">Oferta especial por tiempo limitado</h2>
-      <p class="price">
-        <span class="old">$24 USD</span>
-        <span class="new"> $17 USD</span>
+      <h1>Crea tus propios agentes de IA sin ser programador.</h1>
+      <p class="muted">
+        La guía premium paso a paso para dominar <strong>AgentKit de OpenAI</strong>. Acceso inmediato vía Hotmart.
       </p>
-      <p class="muted">Precio de lanzamiento · Acceso inmediato · Actualizaciones incluidas</p>
-      <p><strong class="timer" id="timer">00:15:00</strong> restantes para aprovechar esta promoción.</p>
+
       <p>
-        <a class="cta" id="cta-offer" href="https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT?utm_source=landing&utm_medium=cta_offer&utm_campaign=agentkit_2025" target="_blank" rel="nofollow">
-          🔥 Adquirir mi guía ahora
+        <a class="cta" href="https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT?utm_source=landing&utm_medium=cta_top&utm_campaign=agentkit_2025" target="_blank" rel="nofollow">
+          Quiero mi guía ahora
         </a>
       </p>
-      <small class="muted">Garantía 7 días Hotmart</small>
-    </section>
 
-    <!-- MOCKUP / PREVIEW -->
-    <section style="margin-top:18px">
-      <div class="panel" style="display:grid;gap:16px">
-        <img class="poster" src="/img/agentkit-preview.jpg" alt="Vista interior de la Guía AgentKit con interfaz moderna de IA" />
-        <div class="card">
-          <ul>
-            <li>Aprende sin tecnicismos, con pasos claros.</li>
-            <li>Plantillas y prompts probados.</li>
-            <li>Casos reales desde el primer día.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <small class="muted">StarLion Academy™ — Donde la magia ocurre con IA.</small>
+    </div>
 
-    <!-- DASHBOARD SIMBÓLICO -->
-    <section style="margin-top:18px">
-      <div class="panel">
-        <img class="poster" src="/img/agentkit-dashboard.png" alt="Interfaz holográfica futurista de AgentKit representando agentes inteligentes" />
-      </div>
-    </section>
+    <div class="poster-container">
+      <img class="poster" src="img/agentkit-hero.jpg" alt="Guía AgentKit – StarLion Academy – Crea tus propios agentes de IA" loading="lazy" />
+    </div>
+  </section>
 
-    <!-- TESTIMONIAL VISUAL + VIDEO UGC -->
-    <section style="margin-top:18px">
-      <div class="panel" style="display:grid;gap:16px">
-        <img class="poster" src="/img/agentkit-testimonial.png" alt="Usuario satisfecho aplicando la Guía AgentKit de StarLion Academy" />
-        <video class="video" id="video-ugc" controls playsinline preload="metadata" poster="/img/agentkit-hero.png">
-          <source src="https://cdn.tu-dominio.com/media/agentkit-testimonial-video.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
-        </video>
-      </div>
-    </section>
+  <!-- VIDEO -->
+  <section style="margin-top: 40px; text-align:center;">
+    <video id="video-main" controls preload="metadata" poster="../img/agentkit-poster.jpg" style="width:100%; max-width:800px; border-radius:20px; box-shadow:0 0 40px #000a;">
+      <source src="https://cdn.bunny.net/star-lion/agentkit-demo.mp4" type="video/mp4" />
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </section>
 
-    <!-- FAQ + CIERRE -->
-    <section style="margin:18px 0 28px">
-      <div class="panel" style="margin-bottom:18px">
-        <h2 style="margin:0 0 8px;color:var(--ivory)">Preguntas frecuentes</h2>
-        <details open class="card"><summary>¿Necesito saber programar?</summary><p>Para nada. Te guiamos paso a paso con ejemplos claros.</p></details>
-        <details class="card"><summary>¿Cómo recibo el libro?</summary><p>Por Hotmart. Acceso inmediato al PDF premium una vez confirmado el pago.</p></details>
-        <details class="card"><summary>¿Puedo leer desde el móvil?</summary><p>Sí. Es compatible con móvil, tablet y desktop.</p></details>
-        <details class="card"><summary>¿Incluye actualizaciones?</summary><p>Sí, la Colección 2025 incluye mejoras y recursos extra.</p></details>
-      </div>
+  <!-- OFERTA -->
+  <section style="text-align:center;">
+    <h2 style="color:var(--gold); margin-bottom:12px;">Oferta especial por tiempo limitado</h2>
+    <p style="font-size:1.3em;">Solo <strong>USD $17</strong> <span style="text-decoration: line-through; color:#777;">$24</span></p>
+    <a class="cta" href="https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT?utm_source=landing&utm_medium=cta_bottom&utm_campaign=agentkit_2025" target="_blank" rel="nofollow">Obtener acceso inmediato</a>
+  </section>
 
-      <div class="panel" style="text-align:center">
-        <h2 style="margin:0 0 10px;color:var(--ivory)">El futuro no espera. Tú sí puedes adelantarlo.</h2>
-        <p>
-          <a class="cta" id="cta-final" href="https://pay.hotmart.com/REEMPLAZA_TU_CHECKOUT?utm_source=landing&utm_medium=cta_final&utm_campaign=agentkit_2025" target="_blank" rel="nofollow">
-            📘 Quiero mi guía ahora – AgentKit de OpenAI
-          </a>
-        </p>
-        <p class="muted">StarLion Academy™ – Donde la magia ocurre con IA.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <footer style="text-align:center;opacity:.75">© 2025 StarLion Academy™ · Todos los derechos reservados</footer>
+  <footer>
+    © 2025 StarLion Academy · rugidoIA.com · Todos los derechos reservados.
   </footer>
-
-  <!-- Eventos de conversión (Meta + TikTok) -->
-  <script>
-    const fire = (n)=>{ try{window.fbq&&fbq('trackCustom',n)}catch{} try{window.ttq&&ttq.track(n)}catch{} };
-    ['cta-top','cta-offer','cta-final'].forEach(id=>{
-      const el=document.getElementById(id);
-      el&&el.addEventListener('click',()=>fire('InitiateCheckout'));
-    });
-  </script>
-
-  <!-- Mini countdown -->
-  <script>
-    (function startTimer(min=15){
-      const el=document.getElementById('timer'); if(!el) return;
-      let t=min*60; setInterval(()=>{
-        const m=String(Math.floor(t/60)).padStart(2,'0');
-        const s=String(t%60).padStart(2,'0');
-        el.textContent=`00:${m}:${s}`; if(t>0) t--;
-      },1000);
-    })();
-  </script>
 </body>
-
 </html>
-
-
-
-
