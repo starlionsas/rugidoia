@@ -1,6 +1,5 @@
 import { Heart, Sparkles } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { siteConfig } from "@/config/site";
 
 export function Invitation() {
   return (
@@ -37,11 +36,11 @@ export function Invitation() {
             conectar.
           </p>
           <div className="mt-10 flex justify-center">
-            <ButtonLink href={siteConfig.whatsapp.link} variant="light" size="xl" icon="whatsapp" className="w-full sm:w-auto [&_svg]:text-whatsapp">
+            <ButtonLink href="#oferta" variant="light" size="xl" className="w-full sm:w-auto [&_svg]:text-coral-strong">
               Quiero conocer Yoga con Color
             </ButtonLink>
           </div>
-          <p className="mt-5 text-sm font-bold text-white/90">Te respondemos por WhatsApp · Sin compromiso de compra</p>
+          <p className="mt-5 text-sm font-bold text-white/90">Precio especial por pocos días · Recíbela por WhatsApp</p>
         </div>
       </div>
     </section>

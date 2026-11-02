@@ -1,7 +1,6 @@
 import { Palette, PersonStanding, Smile, Wind } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { whatsappLink, whatsappMessages } from "@/config/site";
 import { ColorUniverse } from "./ColorUniverse";
 
 const pillars = [
@@ -50,7 +49,7 @@ export function WhatIs() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-reveal>
-            <ButtonLink href={whatsappLink(whatsappMessages.product)} variant="whatsapp" icon="whatsapp">
+            <ButtonLink href="#oferta" variant="primary">
               Quiero conocer Yoga con Color
             </ButtonLink>
             <ButtonLink href="#guia" variant="secondary">

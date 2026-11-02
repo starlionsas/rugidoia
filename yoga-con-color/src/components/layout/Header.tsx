@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Gift, Menu, X } from "lucide-react";
 import { mainNav, siteConfig } from "@/config/site";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Logo } from "./Logo";
@@ -57,16 +57,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={siteConfig.whatsapp.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-whatsapp px-5 py-2.5 text-sm font-extrabold text-white shadow-glow-green transition hover:-translate-y-0.5 hover:bg-whatsapp-dark sm:inline-flex"
+          <Link
+            href="/#oferta"
+            className="hidden items-center gap-2 rounded-full bg-coral-strong px-5 py-2.5 text-sm font-extrabold text-white shadow-glow-coral transition hover:-translate-y-0.5 hover:bg-coral-deep sm:inline-flex"
           >
-            <WhatsAppIcon className="size-5" />
-            Escríbenos
-            <span className="sr-only"> por WhatsApp (se abre en una nueva pestaña)</span>
-          </a>
+            <Gift className="size-5" aria-hidden="true" />
+            Llévatelo ahora
+          </Link>
           <button
             type="button"
             className="inline-flex size-12 items-center justify-center rounded-full bg-white text-ink shadow-soft transition hover:shadow-lift lg:hidden"
@@ -103,12 +100,20 @@ export function Header() {
               );
             })}
           </ul>
+          <Link
+            href="/#oferta"
+            onClick={() => setOpen(false)}
+            className="mt-6 flex min-h-14 items-center justify-center gap-2.5 rounded-full bg-coral-strong px-6 py-4 font-extrabold uppercase tracking-wide text-white shadow-glow-coral"
+          >
+            <Gift className="size-6" aria-hidden="true" />
+            Llévatelo ahora
+          </Link>
           <a
             href={siteConfig.whatsapp.link}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-6 flex min-h-14 items-center justify-center gap-2.5 rounded-full bg-whatsapp px-6 py-4 font-extrabold uppercase tracking-wide text-white shadow-glow-green"
+            className="mt-3 flex min-h-14 items-center justify-center gap-2.5 rounded-full bg-whatsapp px-6 py-4 font-extrabold uppercase tracking-wide text-white shadow-glow-green"
           >
             <WhatsAppIcon className="size-6" />
             Hablar por WhatsApp
