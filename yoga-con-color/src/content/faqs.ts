@@ -1,8 +1,7 @@
 /**
  * Preguntas frecuentes.
  * Respuestas basadas en el contenido real de la guía PDF y en el precio
- * confirmado. [PERSONALIZAR] Confirmar la forma de entrega (por ejemplo,
- * envío por WhatsApp o correo) y agregarla si se desea.
+ * confirmado. Pago por Nequi y entrega del PDF por WhatsApp (confirmado).
  */
 import { formatCOP, productOffer } from "@/config/site";
 
@@ -13,6 +12,10 @@ const priceText = !productOffer
   : productOffer.originalPrice
     ? `Por pocos días tiene un precio especial de ${formatCOP(productOffer.price)} (antes ${formatCOP(productOffer.originalPrice)}). `
     : `Tiene un precio de ${formatCOP(productOffer.price)}. `;
+
+const purchaseText = productOffer
+  ? `Es muy fácil: 1) escríbenos por WhatsApp con el botón “Llévatelo ahora”, 2) realiza el pago por ${productOffer.payment.method} al ${productOffer.payment.number} y 3) al confirmar tu pago te enviamos la guía en PDF por el mismo WhatsApp.`
+  : "Escríbenos por WhatsApp y te indicamos cómo recibir tu guía.";
 
 export const faqs: Faq[] = [
   {
@@ -52,7 +55,12 @@ export const faqs: Faq[] = [
   },
   {
     question: "¿Cómo puedo adquirir el infoproducto?",
-    answer: `${priceText}Escríbenos por WhatsApp con el botón “Llévatelo ahora” y te indicamos cómo recibir tu guía.`,
+    answer: `${priceText}${purchaseText}`,
+  },
+  {
+    question: "¿Cómo recibo la guía?",
+    answer:
+      "Te la enviamos directamente por WhatsApp, en formato PDF, en cuanto se confirme tu pago. Puedes verla en el celular, la tablet o el computador, e imprimir las fichas cuando quieras.",
   },
   {
     question: "¿Cómo puedo recibir más información?",

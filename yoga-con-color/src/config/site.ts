@@ -119,6 +119,8 @@ export type ProductOffer = {
   includes: string[];
   /** Nota opcional: formato, acceso, garantía, etc. */
   note?: string;
+  /** Medio de pago y número al que se paga. */
+  payment: { method: string; number: string };
 };
 
 /** Formatea un valor en pesos colombianos: 24000 -> "$24.000". */
@@ -149,6 +151,8 @@ export const productOffer: ProductOffer | null = {
     "Páginas para colorear",
   ],
   note: "Ideal para niños y niñas de 3 a 10 años. También es un gran apoyo para docentes y cuidadores que trabajan con grupos.",
+  /** Pago confirmado por la marca: Nequi al mismo número de WhatsApp. La guía se envía por WhatsApp. */
+  payment: { method: "Nequi", number: "301 473 1830" },
 };
 
 export type Facilitator = {

@@ -39,7 +39,12 @@ export function Testimonials() {
 
 export function Offer() {
   if (!productOffer) return null;
-  const { title, price, originalPrice, badge, cta, whatsappMessage, includes, note } = productOffer;
+  const { title, price, originalPrice, badge, cta, whatsappMessage, includes, note, payment } = productOffer;
+  const steps = [
+    { title: "Escríbenos", text: "Toca “Llévatelo ahora” y abre el chat de WhatsApp." },
+    { title: `Paga por ${payment.method}`, text: `Envía ${formatCOP(price)} al ${payment.number}.` },
+    { title: "Recibe tu guía", text: "Al confirmar tu pago, te enviamos el PDF por WhatsApp." },
+  ];
   const savings = originalPrice && originalPrice > price ? originalPrice - price : 0;
 
   return (
@@ -110,7 +115,23 @@ export function Offer() {
                   {cta}
                 </ButtonLink>
               </div>
-              <p className="mt-4 text-sm text-ink-soft">Te atendemos por WhatsApp para completar tu compra.</p>
+              <p className="mt-4 text-sm font-bold text-ink-soft">
+                Pagas por {payment.method} y recibes tu guía en PDF por WhatsApp.
+              </p>
+
+              <ol className="mt-8 grid w-full gap-3 text-left" aria-label="Cómo comprar">
+                {steps.map((step, i) => (
+                  <li key={step.title} className="flex items-start gap-3 rounded-2xl bg-cream px-4 py-3">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-ink font-display text-sm font-semibold text-white">
+                      {i + 1}
+                    </span>
+                    <span className="text-sm leading-snug text-ink-soft">
+                      <strong className="block text-ink">{step.title}</strong>
+                      {step.text}
+                    </span>
+                  </li>
+                ))}
+              </ol>
               {note && <p className="mt-6 max-w-md rounded-2xl bg-cream px-4 py-3 text-sm leading-relaxed text-ink">{note}</p>}
             </div>
           </div>
