@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Yoga con Color · Sistema de diseño
+   Paleta: amarillo sol, coral, turquesa, menta, cielo, lila, rosa
+   y blanco cálido. Las variantes "-strong" cumplen contraste AA
+   con texto blanco o sobre fondos claros.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #2b2550;
+  --color-ink-soft: #5e5a80;
+  --color-cream: #fff9f1;
+  --color-cream-deep: #fdf0df;
+
+  --color-sun: #ffc93c;
+  --color-sun-soft: #fff1c7;
+  --color-sun-strong: #9a5b00;
+
+  --color-coral: #ff8a6b;
+  --color-coral-soft: #ffe1d7;
+  --color-coral-strong: #c9432f;
+  --color-coral-deep: #ad3524;
+
+  --color-turquoise: #2ec4b6;
+  --color-turquoise-soft: #d3f4f0;
+  --color-turquoise-strong: #167a73;
+
+  --color-mint: #8ee1c2;
+  --color-mint-soft: #e2f8ef;
+
+  --color-sky: #7cc8f8;
+  --color-sky-soft: #e0f2fe;
+
+  --color-lilac: #c3a8f0;
+  --color-lilac-soft: #efe7fc;
+  --color-lilac-strong: #6b4fbf;
+
+  --color-pink: #ffb8cb;
+  --color-pink-soft: #ffe8ee;
+  --color-pink-strong: #b4366a;
+
+  --color-whatsapp: #0f8043;
+  --color-whatsapp-dark: #0b6b37;
+
+  --font-display: var(--font-fredoka), "Trebuchet MS", system-ui, sans-serif;
+  --font-sans: var(--font-nunito), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-blob: 2.5rem;
+
+  --shadow-soft: 0 10px 30px -12px rgb(43 37 80 / 0.18);
+  --shadow-lift: 0 22px 45px -18px rgb(43 37 80 / 0.28);
+  --shadow-glow-coral: 0 14px 30px -10px rgb(201 67 47 / 0.55);
+  --shadow-glow-green: 0 14px 30px -10px rgb(15 128 67 / 0.55);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-breathe: breathe 8s ease-in-out infinite;
+  --animate-ping-soft: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(2deg);
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes ping-soft {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    80%,
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-sun);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-lilac-strong);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Utilidades propias
+   ------------------------------------------------------------------ */
+@utility text-gradient-rainbow {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-coral-strong) 0%,
+    var(--color-pink-strong) 38%,
+    var(--color-lilac-strong) 72%,
+    #1f6fa8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(rgb(43 37 80 / 0.08) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+@utility rainbow-bar {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-coral) 0%,
+    var(--color-sun) 20%,
+    var(--color-mint) 40%,
+    var(--color-turquoise) 55%,
+    var(--color-sky) 70%,
+    var(--color-lilac) 85%,
+    var(--color-pink) 100%
+  );
+}
+
+/* ------------------------------------------------------------------
+   Animación de aparición al hacer scroll.
+   Solo oculta el contenido cuando JavaScript está disponible, así la
+   página sigue siendo legible sin JS.
+   ------------------------------------------------------------------ */
+@media (scripting: enabled) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Acordeón de preguntas frecuentes */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Contenido largo de los artículos */
+.article-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-ink);
+}
+.article-body p {
+  margin-top: 1rem;
+  line-height: 1.8;
+  color: var(--color-ink-soft);
+  font-size: 1.0625rem;
+}
+.article-body ul,
+.article-body ol {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.article-body li {
+  position: relative;
+  padding-left: 1.75rem;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  font-size: 1.0625rem;
+}
+.article-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.7em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: var(--color-coral);
+}
+.article-body strong {
+  color: var(--color-ink);
+  font-weight: 800;
+}
+
+/* Accesibilidad: respeta la preferencia de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
