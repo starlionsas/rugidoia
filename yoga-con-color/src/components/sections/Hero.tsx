@@ -1,8 +1,8 @@
-import { Heart, Sparkles, Wind } from "lucide-react";
+import { Gift, Heart, Sparkles, Wind } from "lucide-react";
 import { HeroIllustration } from "@/components/illustrations/HeroIllustration";
 import { ButtonLink } from "@/components/ui/Button";
 import { WaveDivider } from "@/components/ui/WaveDivider";
-import { siteConfig } from "@/config/site";
+import { formatCOP, productOffer, siteConfig } from "@/config/site";
 
 export function Hero() {
   return (
@@ -70,6 +70,22 @@ export function Hero() {
               </li>
             ))}
           </ul>
+
+          {productOffer && (
+            <a
+              href="#oferta"
+              style={{ animationDelay: "400ms" }}
+              className="animate-fade-up group mt-7 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-ink shadow-soft ring-2 ring-sun transition hover:-translate-y-0.5 hover:shadow-lift"
+            >
+              <Gift className="size-5 text-coral-strong" aria-hidden="true" />
+              <span>Precio especial:</span>
+              <span className="font-display text-lg font-semibold text-coral-strong">{formatCOP(productOffer.price)}</span>
+              {productOffer.originalPrice && (
+                <span className="text-ink-soft line-through">{formatCOP(productOffer.originalPrice)}</span>
+              )}
+              <span className="text-turquoise-strong underline decoration-2 underline-offset-4 group-hover:no-underline">Ver oferta</span>
+            </a>
+          )}
         </div>
 
         <div className="animate-fade-up relative mx-auto w-full max-w-[34rem]" style={{ animationDelay: "150ms" }}>

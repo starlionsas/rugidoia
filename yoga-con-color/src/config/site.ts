@@ -105,16 +105,41 @@ export const testimonials: Testimonial[] = [];
 
 export type ProductOffer = {
   title: string;
-  /** Ej.: "$ 59.900 COP". */
-  price: string;
-  /** Qué incluye exactamente el infoproducto (solo datos confirmados). */
+  /** Precio actual, en pesos colombianos (solo números). */
+  price: number;
+  /** Precio normal antes del descuento (opcional). */
+  originalPrice?: number;
+  /** Mensaje de la promoción, p. ej. "Precio especial por pocos días". */
+  badge?: string;
+  /** Texto del botón de compra. */
+  cta: string;
+  /** Mensaje prellenado de WhatsApp para el botón de compra. */
+  whatsappMessage: string;
+  /** [PERSONALIZAR] Qué incluye exactamente el infoproducto (solo datos confirmados). Vacío = no se muestra. */
   includes: string[];
   /** Nota opcional: formato, acceso, garantía, etc. */
   note?: string;
 };
 
-/** [PERSONALIZAR] Oferta del infoproducto. null = sección oculta. */
-export const productOffer: ProductOffer | null = null;
+/** Formatea un valor en pesos colombianos: 24000 -> "$24.000". */
+export function formatCOP(value: number): string {
+  return `$${value.toLocaleString("es-CO", { maximumFractionDigits: 0 })}`.replace(/,/g, ".");
+}
+
+/**
+ * Oferta del infoproducto (confirmada por la marca).
+ * [PERSONALIZAR] Cuando termine la promoción, actualiza el precio o elimina
+ * originalPrice y badge. null = sección oculta.
+ */
+export const productOffer: ProductOffer | null = {
+  title: "Yoga con Color",
+  price: 24000,
+  originalPrice: 47000,
+  badge: "Precio especial por pocos días",
+  cta: "Llévatelo ahora",
+  whatsappMessage: "Hola, quiero llevarme Yoga con Color con el precio especial de $24.000.",
+  includes: [],
+};
 
 export type Facilitator = {
   name: string;

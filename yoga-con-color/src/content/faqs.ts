@@ -4,7 +4,15 @@
  * actualizarse cuando se confirmen formato, duración, precio y forma de
  * acceso del infoproducto. No incluir datos no confirmados.
  */
+import { formatCOP, productOffer } from "@/config/site";
+
 export type Faq = { question: string; answer: string };
+
+const priceText = !productOffer
+  ? ""
+  : productOffer.originalPrice
+    ? `Por pocos días tiene un precio especial de ${formatCOP(productOffer.price)} (antes ${formatCOP(productOffer.originalPrice)}). `
+    : `Tiene un precio de ${formatCOP(productOffer.price)}. `;
 
 export const faqs: Faq[] = [
   {
@@ -39,8 +47,7 @@ export const faqs: Faq[] = [
   },
   {
     question: "¿Cómo puedo adquirir el infoproducto?",
-    answer:
-      "Escríbenos por WhatsApp y con gusto te compartiremos la información actualizada sobre el formato, el acceso y las condiciones para comenzar.",
+    answer: `${priceText}Escríbenos por WhatsApp y con gusto te compartiremos la información sobre el formato, el acceso y las condiciones para comenzar.`,
   },
   {
     question: "¿Cómo puedo recibir más información?",
