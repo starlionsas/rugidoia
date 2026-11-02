@@ -81,9 +81,10 @@ export function Ages() {
         >
           <Info className="size-8 shrink-0 text-lilac-strong" aria-hidden="true" />
           <p className="leading-relaxed text-ink-soft">
-            <strong className="text-ink">Cada niño es único.</strong> No todos los grupos realizan los mismos
-            ejercicios ni al mismo ritmo. El acompañamiento del adulto es clave para adaptar cada actividad y
-            respetar siempre los límites del cuerpo.
+            <strong className="text-ink">Cada niño es único.</strong> La guía está pensada especialmente para niños
+            de 3 a 10 años; muchas de sus actividades de respiración y calma pueden adaptarse para compartirlas con
+            hermanos mayores y adolescentes. El acompañamiento del adulto es clave para respetar siempre los límites
+            del cuerpo.
           </p>
           <ButtonLink href={whatsappLink(whatsappMessages.ages)} variant="whatsapp" icon="whatsapp" size="md" className="shrink-0">
             Pregunta por su edad

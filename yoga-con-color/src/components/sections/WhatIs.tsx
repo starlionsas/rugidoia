@@ -53,8 +53,8 @@ export function WhatIs() {
             <ButtonLink href={whatsappLink(whatsappMessages.product)} variant="whatsapp" icon="whatsapp">
               Quiero conocer Yoga con Color
             </ButtonLink>
-            <ButtonLink href="#experiencia" variant="secondary">
-              Ver cómo es una sesión
+            <ButtonLink href="#guia" variant="secondary">
+              Ver qué incluye la guía
             </ButtonLink>
           </div>
         </div>

@@ -87,6 +87,9 @@ yoga-con-color/
 | 3 | El poder de practicar juntos | `#padres-e-hijos` |
 | – | Frase protagonista | – |
 | 4 | ¿Qué es Yoga con Color? + universo de colores interactivo | `#yoga-con-color` |
+| – | La guía por dentro (contenido + vista previa de páginas) | `#guia` |
+| – | ¿Te suena familiar? (momentos cotidianos) | `#momentos` |
+| – | Oferta con precio y botón “Llévatelo ahora” | `#oferta` |
 | 5 | ¿Para qué edades? | `#edades` |
 | 6 | Una experiencia llena de color + ejercicio de respiración guiado | `#experiencia` |
 | 7 | Contenido educativo para padres (7 artículos) | `#aprende` |
@@ -107,7 +110,8 @@ grep -rn "PERSONALIZAR" src
 | URL del sitio | `NEXT_PUBLIC_SITE_URL` (Vercel) | Usa el dominio de Vercel si no se define |
 | Redes sociales y correo | `siteConfig.social` | Vacíos → no se muestran |
 | **Testimonios** | `testimonials` | Vacío → sección oculta. Solo testimonios reales y autorizados |
-| **Precio / qué incluye** | `productOffer` | `null` → sección oculta |
+| **Precio / qué incluye** | `productOffer` | ✅ $24.000 COP (antes $47.000), contenido de la guía PDF |
+| Contenido de la guía (secciones “La guía por dentro” y “¿Te suena familiar?”) | `src/content/guide.ts` | ✅ Basado en la guía PDF real |
 | **Facilitador(a) y credenciales** | `facilitator` | `null` → sección oculta. Solo formación verificable |
 | Asociación de colores del universo | `src/components/sections/ColorUniverse.tsx` | Propuesta conceptual; ajustar al contenido real |
 | Respuestas de FAQ sobre formato, duración, materiales y compra | `src/content/faqs.ts` | Textos provisionales responsables; confirmar con el producto |

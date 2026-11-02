@@ -78,12 +78,12 @@ export function Hero() {
               className="animate-fade-up group mt-7 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-ink shadow-soft ring-2 ring-sun transition hover:-translate-y-0.5 hover:shadow-lift"
             >
               <Gift className="size-5 text-coral-strong" aria-hidden="true" />
-              <span>Precio especial:</span>
+              <span>Guía ilustrada a precio especial:</span>
               <span className="font-display text-lg font-semibold text-coral-strong">{formatCOP(productOffer.price)}</span>
               {productOffer.originalPrice && (
                 <span className="text-ink-soft line-through">{formatCOP(productOffer.originalPrice)}</span>
               )}
-              <span className="text-turquoise-strong underline decoration-2 underline-offset-4 group-hover:no-underline">Ver oferta</span>
+              <span className="text-turquoise-strong underline decoration-2 underline-offset-4 group-hover:no-underline">Ver qué incluye</span>
             </a>
           )}
         </div>

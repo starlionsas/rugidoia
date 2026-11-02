@@ -3,6 +3,8 @@ import { Ages } from "@/components/sections/Ages";
 import { Benefits } from "@/components/sections/Benefits";
 import { Contact } from "@/components/sections/Contact";
 import { Faq } from "@/components/sections/Faq";
+import { GuideInside } from "@/components/sections/GuideInside";
+import { Moments } from "@/components/sections/Moments";
 import { Hero } from "@/components/sections/Hero";
 import { Invitation } from "@/components/sections/Invitation";
 import { Learn } from "@/components/sections/Learn";
@@ -11,7 +13,8 @@ import { QuoteBand } from "@/components/sections/QuoteBand";
 import { Session } from "@/components/sections/Session";
 import { Together } from "@/components/sections/Together";
 import { WhatIs } from "@/components/sections/WhatIs";
-import { siteConfig } from "@/config/site";
+import { productOffer, siteConfig } from "@/config/site";
+import { guide } from "@/content/guide";
 import { faqs } from "@/content/faqs";
 
 export default function HomePage() {
@@ -40,6 +43,25 @@ export default function HomePage() {
         inLanguage: "es",
         publisher: { "@id": `${siteConfig.url}/#organization` },
       },
+      ...(productOffer
+        ? [
+            {
+              "@type": "Product",
+              name: guide.title,
+              description:
+                "Guía digital ilustrada de yoga para niños de 3 a 10 años: cuento, 10 posturas, 10 juegos de atención plena, aventura guiada, relajación, fichas imprimibles y páginas para colorear.",
+              image: `${siteConfig.url}${guide.cover}`,
+              brand: { "@id": `${siteConfig.url}/#organization` },
+              offers: {
+                "@type": "Offer",
+                price: productOffer.price,
+                priceCurrency: "COP",
+                availability: "https://schema.org/InStock",
+                url: `${siteConfig.url}/#oferta`,
+              },
+            },
+          ]
+        : []),
       {
         "@type": "FAQPage",
         mainEntity: faqs.map((f) => ({
@@ -59,6 +81,8 @@ export default function HomePage() {
       <Together />
       <QuoteBand />
       <WhatIs />
+      <GuideInside />
+      <Moments />
       <Offer />
       <Ages />
       <Session />

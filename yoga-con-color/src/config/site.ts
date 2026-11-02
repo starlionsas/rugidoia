@@ -115,7 +115,7 @@ export type ProductOffer = {
   cta: string;
   /** Mensaje prellenado de WhatsApp para el botón de compra. */
   whatsappMessage: string;
-  /** [PERSONALIZAR] Qué incluye exactamente el infoproducto (solo datos confirmados). Vacío = no se muestra. */
+  /** Qué incluye el infoproducto (confirmado con la guía PDF). Vacío = no se muestra. */
   includes: string[];
   /** Nota opcional: formato, acceso, garantía, etc. */
   note?: string;
@@ -137,8 +137,18 @@ export const productOffer: ProductOffer | null = {
   originalPrice: 47000,
   badge: "Precio especial por pocos días",
   cta: "Llévatelo ahora",
-  whatsappMessage: "Hola, quiero llevarme Yoga con Color con el precio especial de $24.000.",
-  includes: [],
+  whatsappMessage: "Hola, quiero llevarme la guía Yoga con Color con el precio especial de $24.000.",
+  includes: [
+    "Guía digital ilustrada en PDF (22 páginas)",
+    "Cuento “El Secreto de los Animales y el Sabio de la Montaña”",
+    "10 posturas de yoga explicadas paso a paso",
+    "10 juegos de atención plena para bajar la energía",
+    "Aventura guiada “En busca del Cristal de la Calma”",
+    "Relajación final: el Ritual del Color Interior",
+    "Fichas para imprimir: “Soy Único” y “La Receta de la Paz”",
+    "Páginas para colorear",
+  ],
+  note: "Ideal para niños y niñas de 3 a 10 años. También es un gran apoyo para docentes y cuidadores que trabajan con grupos.",
 };
 
 export type Facilitator = {
